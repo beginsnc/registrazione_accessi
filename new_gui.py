@@ -6,7 +6,7 @@ from module.accessi import Accesso
 
 # Scelgo il Tema grafico
 # sg.theme_previewer()
-sg.theme("DarkGray11")
+sg.theme("LightGrey1")
 
 # Creazione layout della GUI
 layout = [
@@ -30,7 +30,7 @@ layout = [
     [
         sg.Button(
             "Invia registrazione",
-            font=("Calibri", 15),
+            font=("Calibri", 20),
             size=(30, 2),
             bind_return_key=True,
             pad=(10, 10),
@@ -48,7 +48,9 @@ layout = [
 ]
 
 # Creazione finestra
-window = sg.Window("TextBox Input", layout, resizable=False, element_justification="c")
+window = sg.Window(
+    "Registrazione Visitatori", layout, resizable=False, element_justification="c"
+)
 
 # Ciclo di eventi
 while True:
@@ -60,8 +62,10 @@ while True:
 
     # Gestione evento del bottone
     if event == "Invia registrazione":
+        # ottengo i valori delle text area
         azienda = values["-AZIENDA-"]
         nominativo = values["-NOMINATIVO-"]
+        
         # Creare un'istanza della classe Accesso
         accessi = Accesso("accessi.xlsx")
         risultato = accessi.record_access(azienda, nominativo)
